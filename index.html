@@ -3,31 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Red Army Counter</title>
+<title>USSR Counter</title>
 
 <style>
-
 body{
     margin:0;
     background:#7a0000;
     overflow:hidden;
     font-family:Arial,sans-serif;
-}
-
-.flag{
-    position:absolute;
-    top:10px;
-    left:15px;
-    color:gold;
-    font-size:40px;
-}
-
-.star{
-    position:absolute;
-    top:10px;
-    right:15px;
-    color:gold;
-    font-size:40px;
 }
 
 .container{
@@ -51,7 +34,6 @@ body{
 .digit{
     width:55px;
     height:75px;
-
     background:#111;
     border:2px solid #333;
     border-radius:5px;
@@ -67,43 +49,33 @@ body{
 
 .subtitle{
     color:gold;
-    margin-top:18px;
-    font-size:20px;
+    margin-top:15px;
+    font-size:18px;
     font-weight:bold;
 }
 
-.flags{
+.marquee{
     position:absolute;
     bottom:15px;
-    left:-1600px;
-
-    font-size:34px;
+    left:-2000px;
+    font-size:36px;
     white-space:nowrap;
-
-    animation:moveflags 25s linear infinite;
+    animation:move 30s linear infinite;
 }
 
-@keyframes moveflags{
-    from{
-        left:-1600px;
-    }
-    to{
-        left:100%;
-    }
+@keyframes move{
+    from{ left:-2000px; }
+    to{ left:100%; }
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="flag">☭</div>
-<div class="star">★</div>
-
 <div class="container">
 
 <div class="title">
-☭ RED ARMY VISITOR COUNTER ☭
+☭ USSR VISITOR COUNTER ☭
 </div>
 
 <div class="counter" id="counter"></div>
@@ -114,13 +86,14 @@ THERE IS NO MY PROFILE. ONLY OUR PROFILE.
 
 </div>
 
-<div class="flags">
-☭ ➜ 🇷🇺 🇺🇦 🇧🇾 🇰🇿 🇺🇿 🇬🇪 🇦🇲 🇦🇿 🇱🇹 🇱🇻 🇪🇪 🇲🇩 🇰🇬 🇹🇯 🇹🇲
+<div class="marquee">
+☭ 🔨☭ 🔨☭ 🔨☭ 🔨☭ 🔨☭ 🔨☭ 🔨☭ 🔨☭
 </div>
 
 <script>
 
-fetch("https://api.countapi.xyz/hit/phuchello2811-web/red-army-counter")
+// đổi namespace để chắc chắn đếm được
+fetch("https://api.countapi.xyz/hit/phuchello2811web/ussrcounter")
 .then(r => r.json())
 .then(data => {
 
@@ -136,13 +109,16 @@ fetch("https://api.countapi.xyz/hit/phuchello2811-web/red-army-counter")
 })
 .catch(() => {
 
-    let html = "";
-
-    for(let i=0;i<7;i++){
-        html += `<div class="digit">0</div>`;
-    }
-
-    document.getElementById("counter").innerHTML = html;
+    document.getElementById("counter").innerHTML =
+    `
+    <div class="digit">0</div>
+    <div class="digit">0</div>
+    <div class="digit">0</div>
+    <div class="digit">0</div>
+    <div class="digit">0</div>
+    <div class="digit">0</div>
+    <div class="digit">0</div>
+    `;
 });
 
 </script>
