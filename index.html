@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USSR Counter</title>
+<title>USSR Visitor Counter</title>
 
 <style>
 body{
     margin:0;
     background:#7a0000;
-    overflow:hidden;
+    color:gold;
     font-family:Arial,sans-serif;
+    overflow:hidden;
 }
 
 .container{
     text-align:center;
-    margin-top:25px;
+    margin-top:30px;
 }
 
 .title{
-    color:gold;
     font-size:40px;
     font-weight:bold;
-    margin-bottom:20px;
 }
 
 .counter{
     display:flex;
     justify-content:center;
     gap:4px;
+    margin-top:20px;
 }
 
 .digit{
@@ -40,7 +39,7 @@ body{
 
     color:#7dff7d;
     font-size:52px;
-    font-family:Consolas, monospace;
+    font-family:Consolas,monospace;
 
     display:flex;
     justify-content:center;
@@ -48,24 +47,21 @@ body{
 }
 
 .subtitle{
-    color:gold;
     margin-top:15px;
     font-size:18px;
-    font-weight:bold;
 }
 
-.marquee{
+.flags{
     position:absolute;
-    bottom:15px;
-    left:-2000px;
-    font-size:36px;
+    bottom:10px;
     white-space:nowrap;
+    font-size:34px;
     animation:move 30s linear infinite;
 }
 
 @keyframes move{
-    from{ left:-2000px; }
-    to{ left:100%; }
+    from { transform:translateX(-100%); }
+    to   { transform:translateX(100vw); }
 }
 </style>
 </head>
@@ -73,54 +69,49 @@ body{
 <body>
 
 <div class="container">
+    <div class="title">☭ USSR VISITOR COUNTER ☭</div>
 
-<div class="title">
-☭ USSR VISITOR COUNTER ☭
+    <div class="counter" id="counter">
+        <div class="digit">0</div>
+        <div class="digit">0</div>
+        <div class="digit">0</div>
+        <div class="digit">0</div>
+        <div class="digit">0</div>
+        <div class="digit">0</div>
+        <div class="digit">0</div>
+    </div>
+
+    <div class="subtitle">
+        THERE IS NO MY PROFILE. ONLY OUR PROFILE.
+    </div>
 </div>
 
-<div class="counter" id="counter"></div>
-
-<div class="subtitle">
-THERE IS NO MY PROFILE. ONLY OUR PROFILE.
-</div>
-
-</div>
-
-<div class="marquee">
-☭ 🔨☭ 🔨☭ 🔨☭ 🔨☭ 🔨☭ 🔨☭ 🔨☭ 🔨☭
+<div class="flags">
+🇷🇺 🇺🇦 🇧🇾 🇲🇩 🇪🇪 🇱🇻 🇱🇹 🇬🇪 🇦🇲 🇦🇿 🇰🇿 🇰🇬 🇹🇯 🇹🇲 🇺🇿
+🇷🇺 🇺🇦 🇧🇾 🇲🇩 🇪🇪 🇱🇻 🇱🇹 🇬🇪 🇦🇲 🇦🇿 🇰🇿 🇰🇬 🇹🇯 🇹🇲 🇺🇿
 </div>
 
 <script>
+const url =
+"https://api.countapi.xyz/hit/phuchello2811web/redarmy";
 
-// đổi namespace để chắc chắn đếm được
-fetch("https://api.countapi.xyz/hit/phuchello2811web/ussrcounter")
+fetch(url)
 .then(r => r.json())
 .then(data => {
-
     let num = String(data.value).padStart(7,'0');
 
-    let html = "";
-
-    for(let c of num){
+    let html = '';
+    for (let c of num){
         html += `<div class="digit">${c}</div>`;
     }
 
-    document.getElementById("counter").innerHTML = html;
+    document.getElementById('counter').innerHTML = html;
+
+    console.log("Count =", data.value);
 })
-.catch(() => {
-
-    document.getElementById("counter").innerHTML =
-    `
-    <div class="digit">0</div>
-    <div class="digit">0</div>
-    <div class="digit">0</div>
-    <div class="digit">0</div>
-    <div class="digit">0</div>
-    <div class="digit">0</div>
-    <div class="digit">0</div>
-    `;
+.catch(err => {
+    console.error(err);
 });
-
 </script>
 
 </body>
