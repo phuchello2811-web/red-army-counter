@@ -1,19 +1,64 @@
 <!DOCTYPE html>
 <html>
-<body style="background:#7f0000;color:gold;text-align:center;font-family:Arial">
-<h2>☭ VISITORS OF THE MOTHERLAND ☭</h2>
+<head>
+<meta charset="UTF-8">
+<title>Red Army Counter</title>
 
-<div id="cnt" style="font-size:40px"></div>
+<style>
+body{
+    background:#8b0000;
+    color:gold;
+    text-align:center;
+    font-family:Arial,sans-serif;
+}
+
+#counter{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:4px;
+}
+
+.digit{
+    width:50px;
+    height:65px;
+    background:#111;
+    color:#7fff7f;
+    font-size:42px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:1px solid #333;
+}
+</style>
+</head>
+
+<body>
+
+<h1>☭ VISITORS OF THE MOTHERLAND ☭</h1>
+
+<div id="counter"></div>
+
+<p>FOR THE GLORY OF THE UNION</p>
 
 <script>
-fetch("https://api.countapi.xyz/hit/phuchello2811/red-army-counter")
-.then(r=>r.json())
-.then(d=>{
-document.getElementById("cnt").innerText=
-String(d.value).padStart(7,'0');
+fetch("https://api.countapi.xyz/hit/phuchello2811-web/red-army-counter")
+.then(r => r.json())
+.then(data => {
+    let s = String(data.value).padStart(7,'0');
+    let html = "";
+
+    for(let c of s){
+        html += `<div class="digit">${c}</div>`;
+    }
+
+    document.getElementById("counter").innerHTML = html;
+})
+.catch(() => {
+    document.getElementById("counter").innerHTML =
+    '<div class="digit">0</div><div class="digit">0</div><div class="digit">0</div><div class="digit">0</div><div class="digit">0</div><div class="digit">0</div><div class="digit">0</div>';
 });
 </script>
 
-<p>FOR THE GLORY OF THE UNION</p>
 </body>
 </html>
