@@ -1,63 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Red Army Counter</title>
 
 <style>
+
 body{
+    margin:0;
     background:#8b0000;
-    color:gold;
-    text-align:center;
+    overflow:hidden;
     font-family:Arial,sans-serif;
 }
 
-#counter{
+.container{
+    text-align:center;
     margin-top:30px;
+}
+
+.title{
+    color:gold;
+    font-size:50px;
+    font-weight:bold;
+    text-shadow:2px 2px 0 #700;
+}
+
+.counter{
+    margin-top:25px;
     display:flex;
     justify-content:center;
     gap:4px;
 }
 
 .digit{
-    width:50px;
-    height:65px;
+    width:55px;
+    height:75px;
+
     background:#111;
-    color:#7fff7f;
-    font-size:42px;
+    border:2px solid #333;
+    border-radius:4px;
+
+    color:#7dff7d;
+    font-size:55px;
+    font-family:Consolas,monospace;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    border:1px solid #333;
 }
+
+.subtitle{
+    margin-top:20px;
+    color:gold;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.flag{
+    position:absolute;
+    top:10px;
+    left:15px;
+    font-size:40px;
+    color:gold;
+}
+
+.tank{
+    position:absolute;
+    bottom:10px;
+    left:-300px;
+    font-size:45px;
+    animation:tankmove 18s linear infinite;
+}
+
+@keyframes tankmove{
+    from{
+        left:-300px;
+    }
+    to{
+        left:100%;
+    }
+}
+
+.star{
+    position:absolute;
+    top:10px;
+    right:15px;
+    color:gold;
+    font-size:40px;
+}
+
 </style>
 </head>
 
 <body>
 
-<h1>☭ VISITORS OF THE MOTHERLAND ☭</h1>
+<div class="flag">☭</div>
+<div class="star">★</div>
 
-<div id="counter"></div>
+<div class="container">
 
-<p>FOR THE GLORY OF THE UNION</p>
+<div class="title">
+☭ VISITORS OF THE MOTHERLAND ☭
+</div>
+
+<div class="counter" id="counter">
+</div>
+
+<div class="subtitle">
+THERE IS NO MY PROFILE. ONLY OUR PROFILE.
+</div>
+
+</div>
+
+<div class="tank">
+🚩 🚂 ████████
+</div>
 
 <script>
-fetch("https://api.countapi.xyz/hit/phuchello2811-web/red-army-counter")
-.then(r => r.json())
-.then(data => {
-    let s = String(data.value).padStart(7,'0');
-    let html = "";
 
-    for(let c of s){
+fetch("https://api.countapi.xyz/hit/phuchello2811-web/red-army-counter")
+.then(r=>r.json())
+.then(data=>{
+
+    let num = String(data.value).padStart(7,'0');
+
+    let html="";
+
+    for(let c of num){
         html += `<div class="digit">${c}</div>`;
     }
 
     document.getElementById("counter").innerHTML = html;
 })
-.catch(() => {
-    document.getElementById("counter").innerHTML =
-    '<div class="digit">0</div><div class="digit">0</div><div class="digit">0</div><div class="digit">0</div><div class="digit">0</div><div class="digit">0</div><div class="digit">0</div>';
+.catch(()=>{
+
+    let html="";
+
+    for(let i=0;i<7;i++){
+        html += `<div class="digit">0</div>`;
+    }
+
+    document.getElementById("counter").innerHTML = html;
 });
+
 </script>
 
 </body>
