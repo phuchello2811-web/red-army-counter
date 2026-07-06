@@ -37,7 +37,7 @@ body{
 
 .title{
     color:gold;
-    font-size:42px;
+    font-size:40px;
     font-weight:bold;
     margin-bottom:20px;
 }
@@ -58,7 +58,7 @@ body{
 
     color:#7dff7d;
     font-size:52px;
-    font-family:Consolas,monospace;
+    font-family:Consolas, monospace;
 
     display:flex;
     justify-content:center;
@@ -68,26 +68,24 @@ body{
 .subtitle{
     color:gold;
     margin-top:18px;
-    font-size:22px;
+    font-size:20px;
     font-weight:bold;
 }
 
-.tank{
+.flags{
     position:absolute;
-    bottom:10px;
-    left:-600px;
+    bottom:15px;
+    left:-1600px;
 
-    color:gold;
-    font-size:18px;
-    font-family:monospace;
-    white-space:pre;
+    font-size:34px;
+    white-space:nowrap;
 
-    animation:tankmove 20s linear infinite;
+    animation:moveflags 25s linear infinite;
 }
 
-@keyframes tankmove{
+@keyframes moveflags{
     from{
-        left:-600px;
+        left:-1600px;
     }
     to{
         left:100%;
@@ -111,21 +109,20 @@ body{
 <div class="counter" id="counter"></div>
 
 <div class="subtitle">
-+1 COMRADE JOINED THE UNION
+THERE IS NO MY PROFILE. ONLY OUR PROFILE.
 </div>
 
 </div>
 
-<div class="tank">
-☭ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-╚⊙═⊙═⊙═⊙═⊙═⊙═⊙═⊙═╝
+<div class="flags">
+☭ ➜ 🇷🇺 🇺🇦 🇧🇾 🇰🇿 🇺🇿 🇬🇪 🇦🇲 🇦🇿 🇱🇹 🇱🇻 🇪🇪 🇲🇩 🇰🇬 🇹🇯 🇹🇲
 </div>
 
 <script>
 
 fetch("https://api.countapi.xyz/hit/phuchello2811-web/red-army-counter")
-.then(r=>r.json())
-.then(data=>{
+.then(r => r.json())
+.then(data => {
 
     let num = String(data.value).padStart(7,'0');
 
@@ -137,9 +134,9 @@ fetch("https://api.countapi.xyz/hit/phuchello2811-web/red-army-counter")
 
     document.getElementById("counter").innerHTML = html;
 })
-.catch(()=>{
+.catch(() => {
 
-    let html="";
+    let html = "";
 
     for(let i=0;i<7;i++){
         html += `<div class="digit">0</div>`;
