@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body style="background:#7f0000;color:gold;text-align:center;font-family:Arial">
+<h2>☭ VISITORS OF THE MOTHERLAND ☭</h2>
+
+<div id="cnt" style="font-size:40px"></div>
+
+<script>
+fetch("https://api.countapi.xyz/hit/phuchello2811/red-army-counter")
+.then(r=>r.json())
+.then(d=>{
+document.getElementById("cnt").innerText=
+String(d.value).padStart(7,'0');
+});
+</script>
+
+<p>FOR THE GLORY OF THE UNION</p>
+</body>
+</html>
