@@ -21,29 +21,7 @@ body{
 .title{
     font-size:40px;
     font-weight:bold;
-}
-
-.counter{
-    display:flex;
-    justify-content:center;
-    gap:4px;
-    margin-top:20px;
-}
-
-.digit{
-    width:55px;
-    height:75px;
-    background:#111;
-    border:2px solid #333;
-    border-radius:5px;
-
-    color:#7dff7d;
-    font-size:52px;
-    font-family:Consolas,monospace;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    margin-bottom:20px;
 }
 
 .subtitle{
@@ -51,17 +29,25 @@ body{
     font-size:18px;
 }
 
+.badge{
+    margin-top:20px;
+}
+
+.badge img{
+    max-width:100%;
+}
+
 .flags{
     position:absolute;
     bottom:10px;
     white-space:nowrap;
     font-size:34px;
-    animation:move 30s linear infinite;
+    animation:move 35s linear infinite;
 }
 
 @keyframes move{
-    from { transform:translateX(-100%); }
-    to   { transform:translateX(100vw); }
+    from{ transform:translateX(-100%); }
+    to{ transform:translateX(100vw); }
 }
 </style>
 </head>
@@ -69,50 +55,25 @@ body{
 <body>
 
 <div class="container">
-    <div class="title">☭ USSR VISITOR COUNTER ☭</div>
 
-    <div class="counter" id="counter">
-        <div class="digit">0</div>
-        <div class="digit">0</div>
-        <div class="digit">0</div>
-        <div class="digit">0</div>
-        <div class="digit">0</div>
-        <div class="digit">0</div>
-        <div class="digit">0</div>
+    <div class="title">
+        ☭ USSR VISITOR COUNTER ☭
+    </div>
+
+    <div class="badge">
+        <img src="https://visitor-badge.laobi.icu/badge?page_id=phuchello2811.red-army-counter">
     </div>
 
     <div class="subtitle">
         THERE IS NO MY PROFILE. ONLY OUR PROFILE.
     </div>
+
 </div>
 
 <div class="flags">
 🇷🇺 🇺🇦 🇧🇾 🇲🇩 🇪🇪 🇱🇻 🇱🇹 🇬🇪 🇦🇲 🇦🇿 🇰🇿 🇰🇬 🇹🇯 🇹🇲 🇺🇿
 🇷🇺 🇺🇦 🇧🇾 🇲🇩 🇪🇪 🇱🇻 🇱🇹 🇬🇪 🇦🇲 🇦🇿 🇰🇿 🇰🇬 🇹🇯 🇹🇲 🇺🇿
 </div>
-
-<script>
-const url =
-"https://api.countapi.xyz/hit/phuchello2811web/redarmy";
-
-fetch(url)
-.then(r => r.json())
-.then(data => {
-    let num = String(data.value).padStart(7,'0');
-
-    let html = '';
-    for (let c of num){
-        html += `<div class="digit">${c}</div>`;
-    }
-
-    document.getElementById('counter').innerHTML = html;
-
-    console.log("Count =", data.value);
-})
-.catch(err => {
-    console.error(err);
-});
-</script>
 
 </body>
 </html>
